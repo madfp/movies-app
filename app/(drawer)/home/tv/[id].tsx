@@ -1,7 +1,7 @@
 import DetailPage from "@/components/screens/details";
 
-const MovieDetail = () => {
+const TvDetails = () => {
   return <DetailPage />;
 };
 
-export default MovieDetail;
+export default TvDetails;

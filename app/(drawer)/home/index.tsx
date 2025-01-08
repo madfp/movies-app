@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Main, ScrollView, Spinner, View, YStack } from "tamagui";
-import { Container, Subtitle, Title } from "../../../tamagui.config";
-import { useSearch, useTrending } from "../../../services/queries/movies";
-import { FlatList, ImageBackground } from "react-native";
-import { MovieCard } from "../../../components/ui/card";
-import SearchBar from "../../../components/search-bar";
-import useDebounce from "../../../utils/useDebounce";
+import { Container, Subtitle, Title } from "@/tamagui.config";
+import { useSearch, useTrending } from "@/services/queries/movies";
+import { ImageBackground } from "react-native";
+import { MovieCard } from "@/components/ui/card";
+import SearchBar from "@/components/search-bar";
+import useDebounce from "@/utils/useDebounce";
 
 export default function App() {
   const [search, setSearch] = useState("");

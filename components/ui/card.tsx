@@ -1,7 +1,6 @@
-import { Card, H2, Image, Paragraph, XStack, YStack, Text } from "tamagui";
-import { ResultTrending } from "../../interfaces/api.model";
+import { Card, Image, Paragraph, YStack, Text } from "tamagui";
+import { ResultTrending, MediaType } from "@/interfaces/api.model";
 import { Link } from "expo-router";
-import { MediaType } from "../../interfaces/api.model";
 
 export function MovieCard({ props }: { props: ResultTrending }) {
   return (
