@@ -1,18 +1,34 @@
 import { Stack } from "expo-router";
+import { DrawerToggleButton } from "@react-navigation/drawer";
+import { useTheme } from "tamagui";
 
 export default function Layout() {
+  const theme = useTheme();
   return (
     <Stack
       screenOptions={{
-        headerShown: false,
+        headerShown: true,
+        headerStyle: {
+          backgroundColor: theme.blue7.get(),
+        },
+        headerTintColor: "#fff",
       }}
     >
-      {/* Optionally configure static options outside the route.*/}
       <Stack.Screen
         name="index"
         options={{
-          title: "Online movies",
+          title: "Moviestar",
           headerTitleAlign: "center",
+          headerLeft: () => <DrawerToggleButton tintColor="#fff" />,
+        }}
+      />
+
+      <Stack.Screen
+        name="movie/[id]"
+        options={{
+          title: "Details of the movie",
+          headerTitleAlign: "center",
+          headerLeft: () => <DrawerToggleButton tintColor="#fff" />,
         }}
       />
     </Stack>
