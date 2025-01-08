@@ -62,7 +62,7 @@ export const Button = styled(YStack, {
     width: 0,
   },
   shadowOpacity: 0.25,
-  shadowRadius: 3.84,
+  shadowRadius: 3.84, 
   hoverStyle: {
     backgroundColor: "#5a5fcf",
   },
