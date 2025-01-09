@@ -2,7 +2,7 @@ import { ImageBackground, Text, View } from "react-native";
 import { useMovieDetails } from "@/services/queries/movies";
 import { MediaType } from "@/interfaces/api.model";
 import { Container, Title } from "@/tamagui.config";
-import { Image, YStack } from "tamagui";
+import { H1, Image, Paragraph, Spinner, YStack } from "tamagui";
 import { ScrollView } from "tamagui";
 
 type DetailsPageProps = {
@@ -12,33 +12,40 @@ type DetailsPageProps = {
 
 const DetailPage = ({ id, type }: DetailsPageProps) => {
   const { data, isLoading } = useMovieDetails(id, type);
-  console.log(data?.title);
+
+  if (isLoading) {
+    return <Spinner size={"large"} color="$blue10" my={16} />;
+  }
+
   return (
     <ScrollView>
       <ImageBackground
         source={{
-          uri: `https://image.tmdb.org/t/p/w200/${data?.poster_path}`,
+          uri: `https://image.tmdb.org/t/p/w400/${data?.backdrop_path}`,
         }}
-        style={{ width: "100%", height: 400, justifyContent: "flex-end" }}
-        resizeMode="cover"
+        style={{ justifyContent: "flex-end" }}
       >
-        <Container style={{ flex: 1, justifyContent: "center" }}>
-          <YStack>
-            <Image
-              source={{
-                uri: `https://image.tmdb.org/t/p/w200/${data?.poster_path}`,
-              }}
-              alt={`${data?.title} poster`}
-              width={200}
-              height={300}
-            />
-          </YStack>
-        </Container>
+        <Image
+          source={{
+            uri: `https://image.tmdb.org/t/p/w200/${data?.poster_path}`,
+          }}
+          alt={`${data?.title} poster`}
+          width={200}
+          height={300}
+          borderRadius={10}
+          m={20}
+        />
       </ImageBackground>
-      <Container>
-        <Title color={"$blue7"}>{data?.title}</Title>
+
+      <YStack p={10}>
+        <H1 color={"$blue7"}>{data?.title || data?.name}</H1>
+        <Paragraph theme={"alt2"}>
+          {new Date(
+            data?.release_date ?? data?.first_air_date ?? "No release date"
+          ).getFullYear()}
+        </Paragraph>
         <Text>{data?.overview}</Text>
-      </Container>
+      </YStack>
     </ScrollView>
   );
 };
