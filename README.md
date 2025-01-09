@@ -49,7 +49,3 @@ yarn expo start
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any changes.
-
-## Contact
-
-If you have any questions, feel free to reach out at [your-email@example.com](mailto:your-email@example.com).
