@@ -37,7 +37,7 @@ yarn install
    Create a `.env` file in the root directory and add your API key (see the environment example):
 
 ```env
-API_KEY=your_api_key_here
+EXPO_PUBLIC_API_KEY=your_api_key_here
 ```
 
 4. **Run the application:**
