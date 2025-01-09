@@ -1,5 +1,5 @@
-import { DrawerToggleButton } from "@react-navigation/drawer";
 import { Stack } from "expo-router";
+import { DrawerToggleButton } from "@react-navigation/drawer";
 import { useTheme } from "tamagui";
 
 export default function Layout() {
@@ -14,13 +14,29 @@ export default function Layout() {
         headerTintColor: "#fff",
       }}
     >
-      {/* Optionally configure static options outside the route.*/}
       <Stack.Screen
         name="index"
         options={{
-          title: "My Favorite movies",
+          title: "Favorites",
           headerTitleAlign: "center",
           headerLeft: () => <DrawerToggleButton tintColor="#fff" />,
+        }}
+      />
+
+      <Stack.Screen
+        name="movie/[id]"
+        options={{
+          title: "Details of the movie",
+          headerTitleAlign: "center",
+          headerBackTitle: "Back",
+        }}
+      />
+      <Stack.Screen
+        name="tv/[id]"
+        options={{
+          title: "Details of the TV show",
+          headerTitleAlign: "center",
+          headerBackTitle: "Back",
         }}
       />
     </Stack>

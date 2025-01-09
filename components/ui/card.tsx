@@ -1,12 +1,12 @@
 import { Card, Image, Paragraph, YStack, Text } from "tamagui";
-import { ResultTrending, MediaType } from "@/interfaces/api.model";
+import { MediaType, ResultTrending } from "@/interfaces/api.model";
 import { Link } from "expo-router";
 
 export function MovieCard({ props }: { props: ResultTrending }) {
   return (
     <Link
       href={`/(drawer)/home/${
-        props.media_type === MediaType.MOVIE ? MediaType.MOVIE : MediaType.TV
+        props?.media_type === MediaType.MOVIE ? MediaType.MOVIE : MediaType.TV
       }/${props.id}`}
       asChild
     >

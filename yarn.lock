@@ -4112,6 +4112,14 @@ expo-status-bar@~2.0.0:
   resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-2.0.0.tgz#dd99adc2ace12a24c92718cd0f97b93347103393"
   integrity sha512-vxxdpvpNDMTEc5uTiIrbTvySKKUsOACmfl8OZuUdjNle05oGqwtq3v5YObwym/njSByjoyuZX8UpXBZnxvarwQ==
 
+expo-system-ui@^4.0.6:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/expo-system-ui/-/expo-system-ui-4.0.6.tgz#23d172e346dbe478f31e36019c2570242e7c0762"
+  integrity sha512-JWmw0aaNIB8YxA6bXgH6nClyledZaAG5VNzoRvmXT4+j3MY4waAHSSSdVV71bUgjchT/2KOAcibZ/EeosJONug==
+  dependencies:
+    "@react-native/normalize-colors" "0.76.5"
+    debug "^4.3.2"
+
 expo@~52.0.23:
   version "52.0.23"
   resolved "https://registry.yarnpkg.com/expo/-/expo-52.0.23.tgz#68b79da2206afdce9c68f45f519f812bab9a2cfe"
@@ -6225,6 +6233,11 @@ react-native-is-edge-to-edge@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/react-native-is-edge-to-edge/-/react-native-is-edge-to-edge-1.1.6.tgz#69ec13f70d76e9245e275eed4140d0873a78f902"
   integrity sha512-1pHnFTlBahins6UAajXUqeCOHew9l9C2C8tErnpGC3IyLJzvxD+TpYAixnCbrVS52f7+NvMttbiSI290XfwN0w==
+
+react-native-mmkv@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-3.2.0.tgz#460723eb23b9cc92c65b0416eae9874a6ddf5b82"
+  integrity sha512-9y7K//1MaU46TFrXkyU0wT5VGk9Y2FDLFV6NPl+z3jTbm2G7SC1UIxneF6CfhSmBX5CfKze9SO7kwDuRx7flpQ==
 
 react-native-reanimated@~3.16.1:
   version "3.16.6"

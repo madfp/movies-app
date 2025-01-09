@@ -1,9 +1,12 @@
-import { ImageBackground, Text, View } from "react-native";
+import { ImageBackground, Text } from "react-native";
 import { useMovieDetails } from "@/services/queries/movies";
 import { MediaType } from "@/interfaces/api.model";
-import { Container, Title } from "@/tamagui.config";
-import { H1, Image, Paragraph, Spinner, YStack } from "tamagui";
+import { Button, H1, Image, Paragraph, Spinner, YStack } from "tamagui";
+import { Stack } from "expo-router";
 import { ScrollView } from "tamagui";
+import { useMMKVBoolean, useMMKVObject } from "react-native-mmkv";
+import { Favorite } from "@/interfaces/favorites.model";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 type DetailsPageProps = {
   id: string;
@@ -13,12 +16,53 @@ type DetailsPageProps = {
 const DetailPage = ({ id, type }: DetailsPageProps) => {
   const { data, isLoading } = useMovieDetails(id, type);
 
+  const [isFavorite, setIsFavorite] = useMMKVBoolean(`${type}-${id}`);
+  const [favorites, setFavorites] = useMMKVObject<Favorite[]>("favorites");
+
+  const toogleFavorite = () => {
+    const current = favorites ?? [];
+
+    if (!isFavorite) {
+      setFavorites([
+        ...current,
+        {
+          id: id,
+          mediaType: type,
+          name: data?.title ?? data?.name ?? "Unknown title",
+          thumbnail: data?.poster_path ?? "",
+        },
+      ]);
+    } else {
+      setFavorites(current.filter((fav) => fav.id !== id));
+    }
+
+    setIsFavorite(!isFavorite);
+  };
+
   if (isLoading) {
     return <Spinner size={"large"} color="$blue10" my={16} />;
   }
 
   return (
     <ScrollView>
+      <Stack.Screen
+        options={{
+          title: data?.title || data?.name,
+          headerRight: () => (
+            <Button
+              unstyled
+              pressStyle={{ opacity: 0.8 }}
+              onPress={toogleFavorite}
+            >
+              {isFavorite ? (
+                <MaterialIcons name="favorite" size={24} color="#fff" />
+              ) : (
+                <MaterialIcons name="favorite-border" size={24} color="#fff" />
+              )}
+            </Button>
+          ),
+        }}
+      />
       <ImageBackground
         source={{
           uri: `https://image.tmdb.org/t/p/w400/${data?.backdrop_path}`,
