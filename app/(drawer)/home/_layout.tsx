@@ -31,6 +31,14 @@ export default function Layout() {
           headerBackTitle: "Back",
         }}
       />
+      <Stack.Screen
+        name="tv/[id]"
+        options={{
+          title: "Details of the TV show",
+          headerTitleAlign: "center",
+          headerBackTitle: "Back",
+        }}
+      />
     </Stack>
   );
 }
