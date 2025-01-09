@@ -28,7 +28,7 @@ export default function Layout() {
         options={{
           title: "Details of the movie",
           headerTitleAlign: "center",
-          headerLeft: () => <DrawerToggleButton tintColor="#fff" />,
+          headerBackTitle: "Back",
         }}
       />
     </Stack>

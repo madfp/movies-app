@@ -1,5 +1,9 @@
 import { instance } from "../axios";
-import { TrendingResponse } from "../../interfaces/api.model";
+import {
+  MediaType,
+  TrendingResponse,
+  ResultTrending,
+} from "@/interfaces/api.model";
 
 // API KEY
 const API_KEY = process.env.EXPO_PUBLIC_API_KEY;
@@ -23,9 +27,15 @@ export const searchMovie = async (query: string): Promise<TrendingResponse> => {
 };
 
 // Search movie details
-export const getMovieDetails = async (id: number) => {
+export const getMovieDetails = async ({
+  id,
+  type,
+}: {
+  id: string;
+  type: MediaType;
+}): Promise<ResultTrending> => {
   const response = await instance.get(
-    `/trending/movie/day?language=en-US&id=${id}&api_key=${API_KEY}`
+    `${type}/${id}?language=en-US&api_key=${API_KEY}`
   );
   return response.data;
 };

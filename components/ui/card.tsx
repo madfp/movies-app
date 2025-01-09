@@ -33,7 +33,9 @@ export function MovieCard({ props }: { props: ResultTrending }) {
         </Card.Header>
         <Card.Footer p={8}>
           <YStack>
-            <Text fontSize={15}>{props.title}</Text>
+            <Text fontSize={15}>
+              {props.media_type === MediaType.MOVIE ? props.title : props.name}
+            </Text>
             <Paragraph theme={"alt2"} fontSize={15}>
               {new Date(
                 props.release_date ?? props.first_air_date ?? ""

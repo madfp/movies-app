@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getMovieDetails, getTrending, searchMovie } from "../api/movies";
+import { MediaType } from "@/interfaces/api.model";
 
 export const useTrending = (page: number) => {
   return useQuery({
@@ -16,9 +17,9 @@ export const useSearch = (query: string) => {
   });
 };
 
-export const useMovieDetails = (id: number) => {
+export const useMovieDetails = (id: string, type: MediaType) => {
   return useQuery({
     queryKey: ["movie", id],
-    queryFn: () => getMovieDetails(id),
+    queryFn: () => getMovieDetails({ id, type }),
   });
 };
